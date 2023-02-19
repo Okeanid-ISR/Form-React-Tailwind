@@ -12,10 +12,12 @@ export function App() {
     const handleCompleteTask = (task) => {
         if (completedTaskList.includes(task)) {
             setCompletedTaskList([...completedTaskList.filter((t) => t !== task)]);
+
         } else {
             setCompletedTaskList([...completedTaskList, task]);
         }
     };
+
 
     return (
         <Container>
