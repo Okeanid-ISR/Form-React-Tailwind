@@ -12,7 +12,7 @@ const Header = ({onSubmit}) => {
 
     return (
         <form onSubmit={handleSubmit}
-              className="container mx-auto justify-start w-full max-w-xl space-y-4 rounded-lg px-6 py-6 bg-blue-50">
+              className="container mx-auto justify-start w-full max-w-xl rounded-lg px-6 py-6 bg-blue-50">
             <div className="flex flex-row border-solid border-2 rounded-md">
                 <div className="input-main rounded-md basis-9/10 items-center">
                     <input value={taskName} onChange={(e) => setTaskName(e.target.value)} placeholder="Новая задача..." className="p-2 w-full focus:outline-none rounded-l-lg"/>
@@ -28,7 +28,6 @@ const Header = ({onSubmit}) => {
                     </svg>
                 </button>
             </div>
-            <div>{taskName}</div>
         </form>
     )
 }
