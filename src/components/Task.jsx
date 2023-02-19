@@ -1,11 +1,12 @@
-export const Task = ({ indx, children }) => {
+export const Task = ({ indx, children, completed, onChange  }) => {
     return (
         <div
             className="container mx-auto justify-start w-full max-w-xl  bg-white px-6 py-2">
         <div className="container border rounded-md p-4 mx-auto flex flex-row justify-between items-center justify w-full max-w-xl">
         <div className="flex space-x-2">
-            <input type="checkbox" className="px-3 py-3 cursor-pointer myCheckbox hover:scroll-p-2"/>
+            <input type="checkbox" checked={completed}  onChange={() => onChange(children)} className="px-3 py-3 cursor-pointer hover:scroll-p-2"/>
                 <h3 className="text-gray-400 textName">{indx}. {children}</h3>
+
         </div>
     <button className="x-btn delete-button">
         <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
