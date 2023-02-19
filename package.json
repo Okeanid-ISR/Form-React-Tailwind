@@ -12,7 +12,9 @@
   "author": "Okeanid-ISR <78822546+Okeanid-ISR@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
   },
   "dependencies": {
     "react": "^18.2.0",
