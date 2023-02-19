@@ -11,7 +11,7 @@ const Header = ({onSubmit}) => {
     };
 
     return (
-        <div className="bg-white container mx-auto justify-start w-full max-w-xl space-y-4 rounded-t-lg bg-white">
+        <div className="bg-white container mx-auto justify-start w-full max-w-xl space-y-4 rounded-t-lg bg-white pb-3">
 
         <form onSubmit={handleSubmit}
               className="container mx-auto justify-start w-full max-w-xl px-6 py-6 bg-blue-50">
