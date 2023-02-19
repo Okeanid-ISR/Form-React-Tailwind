@@ -1,6 +1,8 @@
 export const Task = ({ indx, children }) => {
     return (
-        <div className="container border rounded-md p-4 my-4 mx-auto flex flex-row justify-between items-center justify w-full max-w-xl">
+        <div
+            className="container mx-auto justify-start w-full max-w-xl  bg-white px-6 py-2">
+        <div className="container border rounded-md p-4 mx-auto flex flex-row justify-between items-center justify w-full max-w-xl">
         <div className="flex space-x-2">
             <input type="checkbox" className="px-3 py-3 cursor-pointer myCheckbox hover:scroll-p-2"/>
                 <h3 className="text-gray-400 textName">{indx}. {children}</h3>
@@ -12,6 +14,7 @@ export const Task = ({ indx, children }) => {
                 fill="black"/>
         </svg>
     </button>
+        </div>
         </div>
     );
 };
