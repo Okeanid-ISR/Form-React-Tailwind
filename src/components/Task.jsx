@@ -1,5 +1,6 @@
 export const Task = ({indx, children, completed, onChange}) => {
 
+
     return (
         <div
             className="container mx-auto justify-start w-full max-w-xl  bg-white px-6 py-2">
