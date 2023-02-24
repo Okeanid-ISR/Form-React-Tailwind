@@ -9,15 +9,38 @@ export function App() {
     const [completedTaskList, setCompletedTaskList] = useState([]);
     const [error, setError] = useState("")
 
-    const handleRemoveTask = (task) => {
-        setTaskList(taskList.filter((t) => t !== task));
+
+    const addTask = (task) => {
+        const newTaskList = [...taskList, task];
+
+        window.localStorage.setItem("taskList", JSON.stringify(newTaskList));
+
+        setTaskList(newTaskList);
+    };
+
+    const removeTask = (task) => {
+        const newTaskList = taskList.filter((t) => t !== task);
+
+        window.localStorage.setItem("taskList", JSON.stringify(newTaskList));
+
+        setTaskList(newTaskList);
+    };
+    const removeCompletedTask = (task) => {
         setCompletedTaskList(completedTaskList.filter((t) => t !== task));
+
+    }
+
+
+    const handleRemoveTask = (task) => {
+        removeTask(task);
+        removeCompletedTask(task);
     }
 
     const handleCompleteTask = (task) => {
         if (completedTaskList.includes(task)) {
             setCompletedTaskList(completedTaskList.filter((t) => t !== task));
         } else {
+
             setCompletedTaskList([...completedTaskList, task]);
         }
     }
@@ -25,26 +48,25 @@ export function App() {
     const onSubmit = (task) => {
         setError("");
 
-        if (!task) {
-            return;
-        }
-
+        if (!task) return;
         if (taskList.includes(task)) {
             setError(alert("This task is already exists!"));
             return;
         }
-
-        setTaskList([...taskList, task]);
+        addTask(task)
     };
+
+
 
     return (
         <Container>
             <Header onSubmit={onSubmit}/>
-            {error && <div>{error} <button onClick={() => setError('')}>x</button></div>}
-
+            {error && <div>{error}
+                <button onClick={() => setError('')}>x</button>
+            </div>}
             {taskList.map((task, index) => (
-
                 <Task
+                    key={index}
                     indx={index + 1}
                     completed={completedTaskList.includes(task)}
                     onChange={handleCompleteTask}
