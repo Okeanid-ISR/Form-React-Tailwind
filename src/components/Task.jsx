@@ -12,7 +12,6 @@ export const Task = ({indx, children, completed, onChange, onRemove}) => {
                                className="px-3 py-3 cursor-pointer hover:scroll-p-2"/>
                     </label>
                     <h3  style={{ color: completed ? 'black' : '#A1A1AA' }} className="text-gray-400 textName">{indx}. {children}</h3>
-
                 </div>
                  <button onClick={() => onRemove(children)} className="x-btn delete-button">
                     <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
