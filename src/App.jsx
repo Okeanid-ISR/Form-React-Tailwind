@@ -9,6 +9,11 @@ export function App() {
     const [completedTaskList, setCompletedTaskList] = useState([]);
     const [error, setError] = useState("")
 
+    const handleRemoveTask = (task) => {
+        setTaskList(taskList.filter((t) => t !== task));
+        setCompletedTaskList(completedTaskList.filter((t) => t !== task));
+    }
+
     const handleCompleteTask = (task) => {
         if (completedTaskList.includes(task)) {
             setCompletedTaskList(completedTaskList.filter((t) => t !== task));
@@ -43,6 +48,7 @@ export function App() {
                     indx={index + 1}
                     completed={completedTaskList.includes(task)}
                     onChange={handleCompleteTask}
+                    onRemove={handleRemoveTask}
                 >
                     {task}
                 </Task>
