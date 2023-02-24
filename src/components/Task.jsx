@@ -1,5 +1,4 @@
-export const Task = ({indx, children, completed, onChange, onRemove}) => {
-
+export const Task = ({indx, children,isChecked, completed, onChange, onRemove}) => {
 
     return (
         <div
@@ -8,8 +7,7 @@ export const Task = ({indx, children, completed, onChange, onRemove}) => {
                 className="container border rounded-md p-4 mx-auto flex flex-row justify-between items-center justify w-full max-w-xl">
                 <div className="flex space-x-2">
                     <label>
-                        <input type="checkbox" checked={completed} onChange={() => onChange(children)}
-                               className="px-3 py-3 cursor-pointer hover:scroll-p-2"/>
+                        <input type="checkbox" checked={isChecked} onChange={(event) => onChange(event, children)} className="px-3 py-3 cursor-pointer hover:scroll-p-2"/>
                     </label>
                     <h3  style={{ color: completed ? 'black' : '#A1A1AA' }} className="text-gray-400 textName">{indx}. {children}</h3>
                 </div>
@@ -22,6 +20,7 @@ export const Task = ({indx, children, completed, onChange, onRemove}) => {
                 </button>
             </div>
         </div>
+
     );
 };
 
