@@ -1,31 +1,63 @@
-export function taskReducer(taskList, action) {
-    if (action.type === "ADD_TASK") {
-        const newTaskItem = {
-            id: taskList.length + 1,
-            name: action.task,
-            completed: false,
-        };
+import { setItemStorage } from "./utils";
 
-        return [...taskList, newTaskItem];
-    } else if (action.type === "REMOVE_TASK") {
-        return taskList.filter((task) => task.id !== action.id);
-    } else if (action.type === "COMPLETE_TASK") {
-        const newTaskList = taskList.map((task) => {
-            if (task.id === action.id) {
-                task.completed = action.value;
+export function taskReducer(taskList = [], action) {
+    switch (action.type) {
+        case "ADD_TASK": {
+            const newTaskItem = {
+                id: taskList.length + 1,
+                name: action.task,
+                completed: false,
+            };
+
+            const newTaskList = [...taskList, newTaskItem];
+
+            if (action.storageKey) {
+                setItemStorage(action.storageKey, newTaskList);
             }
 
-            return task;
-        });
+            return newTaskList;
+        }
 
-        return newTaskList;
+        case "REMOVE_TASK": {
+            const newTaskList = taskList.filter((task) => task.id !== action.id);
+
+            if (action.storageKey) {
+                setItemStorage(action.storageKey, newTaskList);
+            }
+
+            return newTaskList;
+        }
+
+        case "COMPLETE_TASK": {
+            const newTaskList = taskList.map((task) => {
+                if (task.id === action.id) {
+                    task.completed = action.value;
+                }
+
+                return task;
+            });
+
+            if (action.storageKey) {
+                setItemStorage(action.storageKey, newTaskList);
+            }
+
+            return newTaskList;
+        }
+
+        default:
+            return taskList;
     }
 }
 
+
 export function errorReducer(error, action) {
-    if (action.type === "SHOW_ERROR") {
-        return action.text;
-    } else if (action.type === "CLEAN_ERROR") {
-        return "";
+    switch (action.type) {
+        case "SHOW_ERROR": {
+            return action.text;
+        }
+
+        case "CLEAN_ERROR": {
+            return "";
+        }
     }
 }
