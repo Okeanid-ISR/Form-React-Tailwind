@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const Header = ({onSubmit}) => {
+export const Header = ({onSubmit}) => {
     const [taskName, setTaskName] = useState("");
 
     const handleSubmit = (e) => {
