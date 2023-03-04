@@ -1,10 +1,14 @@
 import { setItemStorage } from "./utils";
+import {v4 as uuidv4} from 'uuid';
+
+const uniqueId = uuidv4();
+
 
 export function taskReducer(taskList = [], action) {
     switch (action.type) {
         case "ADD_TASK": {
             const newTaskItem = {
-                id: taskList.length + 1,
+                id: uniqueId,
                 name: action.task,
                 completed: false,
             };
