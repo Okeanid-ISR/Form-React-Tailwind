@@ -9,7 +9,6 @@ export const Task = ({indx,title, children, uniqueId, completed, onChange, onRem
                 <div className="flex space-x-2">
                     <label>
                         <input
-                            id={uniqueId}
                             type="checkbox"
                             checked={completed}
                             onChange={(e) => onChange(e.target.checked)}

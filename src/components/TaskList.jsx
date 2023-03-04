@@ -5,9 +5,9 @@ import {initialTaskList} from './state';
 import {taskReducer, errorReducer} from './reducer';
 import Container from './Container';
 import Footer from './Footer';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
-const uniqueId = uuidv4();
+const uniqueId = uuidv4()
 
 export default function TaskList() {
     const storageKey = "taskList";
@@ -22,22 +22,30 @@ export default function TaskList() {
         0
     ) : 0;
 
-
     const handleCleanError = () => {
-        dispatchError({ type: "CLEAN_ERROR" });
+        dispatchError({type: "CLEAN_ERROR"});
     };
 
     const handleSubmit = (task) => {
-        dispatchError({ type: "CLEAN_ERROR" });
+        dispatchError({type: "CLEAN_ERROR"});
         if (!task) {
             dispatchError({
                 type: "SHOW_ERROR",
-                text: "Пожалуйста, укажите название задачи",
+                text: alert("Please input your task!"),
             });
             return;
         }
 
-        dispatchTaskList({ type: "ADD_TASK", task, storageKey });
+        const taskExists = taskList.find((t) => t.name === task);
+        if (taskExists) {
+            dispatchError({
+                type: "SHOW_ERROR",
+                text: alert("Task already exists!"),
+            });
+            return;
+        }
+
+        dispatchTaskList({type: "ADD_TASK", task, storageKey});
     };
 
     const handleCompleteTask = (value, id) => {
@@ -50,7 +58,7 @@ export default function TaskList() {
     };
 
     const handleRemoveTask = (id) => {
-        dispatchTaskList({ type: "REMOVE_TASK", id, storageKey });
+        dispatchTaskList({type: "REMOVE_TASK", id, storageKey});
     };
 
     return (
@@ -68,7 +76,6 @@ export default function TaskList() {
                     key={task.id}
                     indx={index + 1}
                     completed={task.completed}
-                    uniqueId={uniqueId}
                     onChange={(value) => handleCompleteTask(value, task.id)}
                     onRemove={() => handleRemoveTask(task.id)}
                 />
