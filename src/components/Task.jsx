@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Task = ({indx,title, children, uniqueId, isChecked, completed, onChange, onRemove}) => {
+export const Task = ({indx,title, children, uniqueId, completed, onChange, onRemove}) => {
 
 
     return (
@@ -11,8 +11,8 @@ export const Task = ({indx,title, children, uniqueId, isChecked, completed, onCh
                         <input
                             id={uniqueId}
                             type="checkbox"
-                            checked={isChecked}
-                            onChange={onChange}
+                            checked={completed}
+                            onChange={(e) => onChange(e.target.checked)}
                             className="px-3 py-3 cursor-pointer hover:scroll-p-2"
                         />
                     </label>
