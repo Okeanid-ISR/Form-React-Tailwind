@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Task = ({indx,title, children, uniqueId, completed, onChange, onRemove}) => {
+export const Task = ({indx,title, children, completed, onChange, onRemove}) => {
 
 
     return (

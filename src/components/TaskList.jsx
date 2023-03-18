@@ -5,9 +5,7 @@ import {initialTaskList} from './state';
 import {taskReducer, errorReducer} from './reducer';
 import Container from './Container';
 import Footer from './Footer';
-import { v4 as uuidv4 } from 'uuid';
 
-const uniqueId = uuidv4()
 
 export default function TaskList() {
     const storageKey = "taskList";
