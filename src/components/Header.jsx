@@ -20,7 +20,7 @@ export const Header = ({onSubmit}) => {
                         <input value={taskName} onChange={(e) => {
                             setTaskName(e.target.value)
 
-                        }} placeholder="Новая задача..."
+                        }} placeholder="New task..."
                                className="p-2 w-full focus:outline-none rounded-l-lg input_cs"/>
                     </div>
                     <button type="submit"
