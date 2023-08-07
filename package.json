@@ -9,7 +9,6 @@
     "format": "prettier --write src/**/*.{js,jsx,html,css}"
   },
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/Okeanid-ISR/Form-React-Tailwind.git",
   "author": "Okeanid-ISR <78822546+Okeanid-ISR@users.noreply.github.com>",
   "license": "MIT",
